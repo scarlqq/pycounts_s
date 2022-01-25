@@ -25,3 +25,11 @@ jobs:
         flags: unittests
         name: codecov-umbrella
         fail_ci_if_error: true
+    # Step 7. Use Codecov to track coverage
+    - uses: codecov/codecov-action@v2
+      with:
+        files: ./coverage.xml   # coverage report
+        fail_ci_if_error: true  # terminate workflow if an error occurs
+    # Step 8. Build documentation
+    - name: Build documentation
+      run: poetry run make html --directory docs/
